@@ -9,10 +9,9 @@ from .Fonctions import *
 import random
 
 def crawl(user_id):
-    service = Service(executable_path='./geckodriver')
-    driver = webdriver.Firefox(service=service)
+    driver = webdriver.Firefox()
     options = Options()
-    options.headless = False
+    options.headless = True
     driver.get('https://0782562l.index-education.net/pronote/')
 
     # brouillage
