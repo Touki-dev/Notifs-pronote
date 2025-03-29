@@ -1,8 +1,7 @@
-# This example requires the 'message_content' intent.
+# Pour que ce code marche il faut créer un bot discord et enregistrer son TOKEN dans Variables.py
 import discord
 from Crawler.Crawling import crawl
-import json
-from Variables import USER_ID, TOKEN
+from Variables import USER_ID, TOKEN_DISCORD
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -29,4 +28,4 @@ async def on_message(message):
         else:
             await message.channel.send("RAS")
 
-client.run(TOKEN)
+client.run(TOKEN_DISCORD)
