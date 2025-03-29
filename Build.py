@@ -1,8 +1,13 @@
+import os
 import sqlite3
 import uuid
 import getpass
 
 def create_database():
+    database_dir = '/home/freebox/Notifs-pronote/Database'
+    if not os.path.exists(database_dir):
+        os.makedirs(database_dir)
+
     conn = sqlite3.connect('Database/database.db')
     cursor = conn.cursor()
     cursor.execute('''
@@ -38,7 +43,7 @@ def create_user():
 
     with open('Variables.py', 'w') as file:
         file.write(f'USER_ID = "{user_id}"\n')
-        file.write('TOKEN = ""\n')
+        file.write('TOKEN_DISCORD = ""\n')
 
     print(f"Utilisateur créé avec succès ! Votre ID est : {user_id}")
     print("Votre ID est stocké dans Variables.py")

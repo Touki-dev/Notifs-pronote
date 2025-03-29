@@ -6,6 +6,7 @@
 ```shell
 pip install selenium discord flask 
 ```
+- Installer geckodriver et le placer à la racine du projet : https://github.com/mozilla/geckodriver/releases
 - Construire le projet :
 ```shell
 python3 Build.py 

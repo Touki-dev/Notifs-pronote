@@ -9,7 +9,7 @@ from .Fonctions import *
 import random
 
 def crawl(user_id):
-    service = Service(executable_path='./Crawler/geckodriver')
+    service = Service(executable_path='./geckodriver')
     driver = webdriver.Firefox(service=service)
     options = Options()
     options.headless = False
