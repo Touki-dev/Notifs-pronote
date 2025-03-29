@@ -13,7 +13,7 @@ python3 Build.py
 
 ## Utiliser un bot discord (opt1)
 - Créer un bot discord : https://discordpy.readthedocs.io/en/stable/discord.html#discord-intro
-- Enregistrer le TOKEN du bot dans le fichier Variables.py créé par Build.py
+- Enregistrer le TOKEN du bot dans le fichier `Variables.py` créé par Build.py
 - Exécuter cette commande pour lancer le bot :
 ```shell
 python3 BotDiscord.py 
