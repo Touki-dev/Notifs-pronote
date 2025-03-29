@@ -1,4 +1,4 @@
-### Notif Pronote
+# Notif Pronote
 Ce repo contient un code qui permet l'accès automatique à pronote
 
 ## Démarer pour la première fois
@@ -16,3 +16,5 @@ Exécuter cette commande pour lancer le bot :
 ## Utilser une API (opt2)
 Démarer l'API avec la commande :
 ``` python3 API.py ```
+> Vous pouvez maintenant envoyer des requète a cette API,ex
+> 127.0.0.1/crawl?user_id=votre_ID
