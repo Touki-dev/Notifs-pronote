@@ -7,6 +7,8 @@ from selenium.webdriver.common.by import By
 from .Fonctions import *
 import random
 
+from Variables import GECKODRIVER_PATH
+
 def crawl(user_id):
     # Configuration des options pour Firefox
     options = Options()
@@ -28,7 +30,7 @@ def crawl(user_id):
     options.add_argument("--private")
 
     # Initialisation du service GeckoDriver
-    service = Service('./geckodriver')  # Assurez-vous que ce chemin est correct
+    service = Service(GECKODRIVER_PATH)
     driver = webdriver.Firefox(service=service, options=options)
 
     driver.get('https://0782562l.index-education.net/pronote/')
