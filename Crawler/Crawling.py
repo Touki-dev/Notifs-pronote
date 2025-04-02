@@ -4,17 +4,15 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-
 from .Fonctions import *
 import random
 
 def crawl(user_id):
-    driver = webdriver.Firefox()
+    # Configuration des options pour Firefox
     options = Options()
-    options.headless = True
-    driver.get('https://0782562l.index-education.net/pronote/')
+    options.add_argument("-headless")
 
-    # brouillage
+    # Sélectionner un agent utilisateur aléatoire
     user_agents = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0",
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -25,11 +23,15 @@ def crawl(user_id):
         "Mozilla/5.0 (Linux; Android 11; SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36",
         "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     ]
-
-    # Sélectionner un agent utilisateur aléatoire
     user_agent = random.choice(user_agents)
     options.set_preference("general.useragent.override", user_agent)
     options.add_argument("--private")
+
+    # Initialisation du service GeckoDriver
+    service = Service('./geckodriver')  # Assurez-vous que ce chemin est correct
+    driver = webdriver.Firefox(service=service, options=options)
+
+    driver.get('https://0782562l.index-education.net/pronote/')
 
     res = dict()
     IDs = get_IDs(user_id)
@@ -45,7 +47,7 @@ def crawl(user_id):
         password_field.send_keys(passwd)
         submit_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'kc-login')))
         submit_button.click()
-                
+
         res["homeworks"] = get_homeworks(driver)
         res["notes"], res["moyennes"], res["notifs_note"] = get_notes(driver, user_id)
 
